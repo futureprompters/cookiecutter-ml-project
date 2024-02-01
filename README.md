@@ -21,12 +21,20 @@ pip install cookiecutter-data-science
 # conda install cookiecutter-data-science -c conda-forge
 ```
 
+**Note for FP's forked version**:
+Currently we use `v2` version which is still in a beta phase. [This ticket](https://github.com/drivendata/cookiecutter-data-science/pull/246) includes all information about current state of the original `cookiecutter-data-science` project.
+
+As logn as `v2` is not officialy finished, we need to manually install `ccds` tool. To do it, one should execute:
+```bash
+pip install git+https://github.com/drivendata/cookiecutter-data-science@v2
+```
+
 ## Starting a new project
 
-To start a new project, run:
+Then, to start a new project, run:
 
 ```bash
-ccds https://github.com/drivendata/cookiecutter-data-science
+ccds https://github.com/futureprompters/cookiecutter-ml-project -c fp
 ```
 
 [![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)
@@ -38,12 +46,14 @@ The directory structure of your new project will look something like this (depen
 ```
 ├── LICENSE            <- Open-source license if one is chosen
 ├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
-├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
+├── README.md          <- The top-level README for developers using this project. Taken from [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
+├── storage
+|   ├── logs
+|   └── data
+│       ├── external   <- Data from third party sources.
+│       ├── interim    <- Intermediate data that has been transformed.
+│       ├── processed  <- The final, canonical data sets for modeling.
+│       └── raw        <- The original, immutable data dump.
 │
 ├── docs               <- A default mkdocs project; see mkdocs.org for details
 │
@@ -66,23 +76,24 @@ The directory structure of your new project will look something like this (depen
 │
 ├── setup.cfg          <- Configuration file for flake8
 │
-└── {{ cookiecutter.module_name }}                <- Source code for use in this project.
-    │
-    ├── __init__.py    <- Makes {{ cookiecutter.module_name }} a Python module
-    │
-    ├── data           <- Scripts to download or generate data
-    │   └── make_dataset.py
-    │
-    ├── features       <- Scripts to turn raw data into features for modeling
-    │   └── build_features.py
-    │
-    ├── models         <- Scripts to train models and then use trained models to make
-    │   │                 predictions
-    │   ├── predict_model.py
-    │   └── train_model.py
-    │
-    └── visualization  <- Scripts to create exploratory and results oriented visualizations
-        └── visualize.py
+├── data               <- Scripts to download or generate data
+│   └── make_dataset.py
+└── src                <- Source code for use in this project.
+    └── {{ cookiecutter.module_name }} <- Source code of the module
+        │
+        ├── __init__.py    <- Makes {{ cookiecutter.module_name }} a Python module
+        │
+        │
+        ├── features       <- Scripts to turn raw data into features for modeling
+        │   └── build_features.py
+        │
+        ├── models         <- Scripts to train models and then use trained models to make
+        │   │                 predictions
+        │   ├── predict_model.py
+        │   └── train_model.py
+        │
+        └── visualization  <- Scripts to create exploratory and results oriented visualizations
+            └── visualize.py
 ```
 
 ## Using v1
