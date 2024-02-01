@@ -3,7 +3,7 @@ name = {{ cookiecutter.module_name|tojson }}
 version = "0.0.1"
 description = {{ cookiecutter.description|tojson }}
 authors = [{{ cookiecutter.author_name|tojson }}]
-{% if cookiecutter.open_source_license != 'No license file' %}license = { file = "LICENSE" }{% endif %}
+{% if cookiecutter.open_source_license != 'No license file' %}license = {{ cookiecutter.open_source_license }} {% endif %}
 readme = "README.md"
 
 [tool.poetry.dependencies]
